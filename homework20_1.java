@@ -17,19 +17,25 @@ Please complete the following program to fullfil the function.
 */
 
 // ran in jgrasp prior to execute expected output
+import java.util.Scanner;
+
 public class homework20_1
 {
    public static void main(String[] args)
    {
       //add your code here
-      LinkedList list = new LinkedList();
-      list.head = new ListNode(1);
-      list.head.next = new ListNode(2);
-      list.head.next.next = new ListNode(3);
-      list.head.next.next.next = new ListNode(3);
-      list.head.next.next.next.next = new ListNode(5);
-      deleteDuplicates(list);
-      System.out.println(list);
+      Scanner sc = new Scanner(System.in);
+      LinkedList llist = new LinkedList();
+      llist.head = new ListNode(sc.nextInt());
+      ListNode current = llist.head;
+
+      for (int i = 1; i < 5; i++) {
+         current.next = new ListNode(sc.nextInt());
+         current = current.next;
+      }
+
+      deleteDuplicates(llist);
+      System.out.println(llist);
    
    }
    public static void deleteDuplicates(LinkedList llist)
@@ -39,13 +45,9 @@ public class homework20_1
       while (current != null && current.next != null)
       {
          if (current.value == current.next.value)
-         {
             current.next = current.next.next;
-         }
          else
-         {
             current = current.next;
-         }
       }
    }
 }
